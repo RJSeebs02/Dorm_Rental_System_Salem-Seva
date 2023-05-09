@@ -116,6 +116,9 @@ background-color: white;
 #wrapper #submenu a{
 	color: white;
 }
+#wrapper #submenu a .searchbar{
+	color: white;
+}
 #wrapper #submenu :hover{
 	color: #7A95FF;
 	transition: 0.2s;

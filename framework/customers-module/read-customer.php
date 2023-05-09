@@ -1,4 +1,5 @@
 <!--Display Customers records page-->
+<span id="search-result">
 <body>
 	<div id="subtitle">
 		<h2>List of Customers</h2>
@@ -51,3 +52,4 @@
 			?>
     </table>
 </body>
+</span>

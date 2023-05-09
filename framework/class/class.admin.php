@@ -131,7 +131,7 @@ class Admin{
 		$q = $this->conn->prepare($sql);
 		$q->execute(['username' => $username,'password' => $password ]);
 		$number_of_rows = $q->fetchColumn();
-		
+		/*$password = md5($password);*/
 		if($number_of_rows == 1){
 			
 			$_SESSION['login']=true;

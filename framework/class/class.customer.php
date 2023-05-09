@@ -55,6 +55,24 @@ class Customer{
 			return false;
 		}
 	}
+
+	public function list_customer_search($keyword){
+		
+		//$keyword = "%".$keyword."%";
+
+		$q = $this->conn->prepare('SELECT * FROM `customer` WHERE (`cust_fname`) LIKE ?');
+		$q->bindValue(1, "%$keyword%", PDO::PARAM_STR);
+		$q->execute();
+
+		while($r = $q->fetch(PDO::FETCH_ASSOC)){
+		$data[]= $r;
+		}
+		if(empty($data)){
+		   return false;
+		}else{
+			return $data;	
+		}
+	}
 	/*Function that selects all the records from the customer table */
 	public function list_customers(){
 		$sql="SELECT * FROM customer";
