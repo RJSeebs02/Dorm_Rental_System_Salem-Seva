@@ -6,11 +6,13 @@ CREATE TABLE `admin` (
   `adm_fname` varchar(50) NOT NULL,
   `adm_lname` varchar(50) NOT NULL,
   `adm_cnumber` int(20) NOT NULL,
+  `adm_access` varchar(255) NOT NULL,
+  `adm_status` int(1) NOT NULL,
   PRIMARY KEY  (`adm_username`)
 );
 
-INSERT INTO admin(adm_username,adm_password,adm_email,adm_fname,adm_lname,adm_cnumber) 
-VALUES ("admin", "123", "admin@admin.com", "Admin", "Admin", 123
+INSERT INTO admin(adm_username,adm_password,adm_email,adm_fname,adm_lname,adm_cnumber,adm_access,adm_status) 
+VALUES ("admin", "123", "admin@admin.com", "Admin", "Admin", 123, "Manager", 0
 );
 
 DROP TABLE IF EXISTS `customer`;
