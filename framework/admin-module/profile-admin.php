@@ -14,6 +14,13 @@
             <label for="adm_password">Password: </label>
 		    <input type="text" id="adm_password" class="text" name="adm_password" value="<?php echo $admin->get_password($id);?>" placeholder="Enter Password..." required>
             
+            <label for="adm_access">Access Level</label>
+            <select id="adm_access" name="adm_access">
+              	<option value="Staff">Staff</option>
+              	<option value="Supervisor">Supervisor</option>
+              	<option value="Manager">Manager</option>
+            </select>
+
             <input type="submit" value="Update"> <!--Button that passes parameters input to the process file--->
         </div>
         <div id="form-half">
@@ -27,5 +34,7 @@
 		    <input type="text" id="adm_cnumber" class="text" name="adm_cnumber" value="<?php echo $admin->get_cnumber($id);?>" placeholder="Enter Contact No...." required>    
         </div>
     </form>
+    <form method="POST" action="processes/process.admin.php?action=delete">
+        <button type="submit" name="adm_username" value="<?php echo $admin->get_username($id);?>"><a>Delete</a></button>
+    </form> 
 </div>
-

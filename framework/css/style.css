@@ -186,6 +186,16 @@ input[type=submit]:hover {
 	background-color: #7A95FF;
 	transition: 0.2s;
 }
+button[type=submit]{
+	background-color: white;
+	border: 1px solid #ccc;
+	margin-top: 365px;
+	padding: 10px;
+}
+button[type=submit]:hover {
+	background-color: #7A95FF;
+	transition: 0.2s;
+}
 select{
 	width: 100%;
   	padding: 12px;

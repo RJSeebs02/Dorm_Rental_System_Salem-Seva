@@ -57,6 +57,25 @@ class Room{
 			return false;
 		}
 	}
+
+	public function list_room_search($keyword){
+		
+		//$keyword = "%".$keyword."%";
+
+		$q = $this->conn->prepare('SELECT * FROM `room` WHERE (`room_number`) LIKE ?');
+		$q->bindValue(1, "%$keyword%", PDO::PARAM_STR);
+		$q->execute();
+
+		while($r = $q->fetch(PDO::FETCH_ASSOC)){
+		$data[]= $r;
+		}
+		if(empty($data)){
+		   return false;
+		}else{
+			return $data;	
+		}
+	}
+
 	/*Function that selects all the records from the room table */
 	public function list_rooms(){
 		$sql="SELECT * FROM room";

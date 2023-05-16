@@ -31,6 +31,9 @@
         
             <input type="hidden" id="cust_status" class="text" name="cust_status" value="<?php echo $customer->get_cust_status($id);?>" placeholder="Enter Cust Status..." readonly>        
         </div>
-    </form>   
+    </form>
+    <form method="POST" action="processes/process.customer.php?action=delete">
+        <button type="submit" name="cust_id" value="<?php echo $customer->get_cust_id($id);?>"><a>Delete</a></button>
+    </form>    
 </div>
 

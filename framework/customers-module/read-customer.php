@@ -13,7 +13,6 @@
         		<th>Home Address</th>
 				<th>Contact Number</th>
 				<th>Status</th>
-				<th>Operation</th>
 			</tr>
 		</thead>
 		<?php
@@ -32,10 +31,6 @@
         					<td><?php echo $cust_address;?></td>
 							<td><?php echo $cust_cnumber;?></td>
 							<td><?php echo $cust_status;?></td>
-							<td><form action="processes/process.customer.php?action=delete" method="POST">
-								<input type="hidden" name="cust_id" value="<?php echo $cust_id;?>">
-								<input type="submit" value="Delete">
-       						</form></td>
 						</tr>
 					</tbody>
 					<?php

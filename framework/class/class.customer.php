@@ -73,6 +73,7 @@ class Customer{
 			return $data;	
 		}
 	}
+
 	/*Function that selects all the records from the customer table */
 	public function list_customers(){
 		$sql="SELECT * FROM customer";

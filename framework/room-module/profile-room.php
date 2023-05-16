@@ -32,6 +32,9 @@
 		    <input type="hidden" id="room_status" class="text" name="room_status" value="<?php echo $room->get_room_status($id);?>" placeholder="Enter Room Status..." readonly>        
         </div>
     </form>
+    <form method="POST" action="processes/process.room.php?action=delete">
+        <button type="submit" name="room_id" value="<?php echo $room->get_room_id($id);?>"><a>Delete</a></button>
+    </form> 
 </div>
 
 

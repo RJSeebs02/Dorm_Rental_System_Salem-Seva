@@ -19,6 +19,9 @@
 			<input type="submit" class="button" value="SUBMIT"> <!--Button that passes parameters input to the process file--->
 		</div>
 		</form>
+		<form method="POST" action="processes/process.transaction.php?action=delete">
+        <button type="submit" name="type_id" value="<?php echo $transaction->get_transaction_id($id);?>"><a>Delete</a></button>
+    </form>
 	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!--Display admin records page-->
 <body>
+	<span id="search-result">
 	<div id="subtitle">
 		<h2>List of Admins</h2>
 	</div>
@@ -10,7 +11,7 @@
         		<th>Admin Email</th>
         		<th>Admin Name</th>
 				<th>Contact Number</th>
-				<th>Operation</th>
+				<th>Access</th>
 			</tr>
 		</thead>
 		<?php
@@ -27,10 +28,7 @@
 							<td><?php echo $adm_email;?></td>
         					<td><?php echo $adm_fname.' '.$adm_lname;?></a></td>
 							<td><?php echo $adm_cnumber;?></td>
-							<td><form action="processes/process.admin.php?action=delete" method="POST">
-								<input type="hidden" name="adm_username" value="<?php echo $adm_username;?>">
-								<input type="submit" value="Delete">
-       						</form></td>
+							<td><?php echo $adm_access;?></td>
 						</tr>
 					</tbody>
 					<?php

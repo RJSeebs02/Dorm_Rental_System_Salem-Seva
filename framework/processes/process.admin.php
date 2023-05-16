@@ -28,10 +28,10 @@ function create_new_admin(){
     $fname = ucfirst($_POST['adm_fname']);
     $lname = ucfirst($_POST['adm_lname']);
     $cnumber = $_POST['adm_cnumber'];
-    
+    $access = $_POST['adm_access'];
     /*$password = md5($password);*/
     /*Passes the parameters to the class function */
-    $result = $admin->new_admin($username,$password,$email,$fname,$lname,$cnumber);
+    $result = $admin->new_admin($username,$password,$email,$fname,$lname,$cnumber,$access);
     if($result){
         $username = $admin->get_username($username);
         header("location: ../index.php?page=admins");
@@ -48,39 +48,25 @@ function update_admin(){
     $fname = ucfirst($_POST['adm_fname']);
     $lname = ucfirst($_POST['adm_lname']);
     $cnumber = $_POST['adm_cnumber'];
+    $access = $_POST['adm_access'];
     
     /*$password = md5($password);*/
     /*Passes the parameters to the class function */
-    $result = $admin->update_admin($username,$password,$email,$fname,$lname,$cnumber);
+    $result = $admin->update_admin($username,$password,$email,$fname,$lname,$cnumber,$access);
     if($result){
         header('location: ../index.php?page=admins&subpage=records&id='.$username);
     }
 }
 
 /*Main Function Process for deleting an admin */
-function delete_admin()
-{   
-    /*If parameter was passed succesfully */
+function delete_admin(){
     if (isset($_POST['adm_username'])) {
         $admin = new Admin();
-        /*Receives the parameters passed from the delete button */
         $id = $_POST['adm_username'];
-
-        /*Passes the parameters to the class function */
         $result = $admin->delete_admin($id);
-        
-        /*If result was executed */
         if ($result) {
             header("location: ../index.php?page=admins");
         } 
-        /*If result was interrupted */
-        else {
-            echo "Error deleting admin.";
-        }
-    } 
-    /*If parameter was not passed successfully */
-    else {
-        echo "Invalid admin ID.";
     }
 }
 ?>

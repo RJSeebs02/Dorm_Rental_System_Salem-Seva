@@ -8,7 +8,6 @@
 			<tr>
         		<th>Transaction Type ID</th>
         		<th>Transaction Desc</th>
-				<th>Operation</th>
 			</tr>
 		</thead>
 		<?php
@@ -23,10 +22,6 @@
         					<td><?php echo $type_id;?></td>
 							<!--Redirects to the profile page if clicked-->
         					<td><a href="index.php?page=transactions&subpage=profile&id=<?php echo $type_id; ?>"><?php echo $type_description;?></a></td>
-							<td><form action="processes/process.transaction.php?action=delete" method="POST">
-								<input type="hidden" name="type_id" value="<?php echo $type_id;?>">
-								<input type="submit" value="Delete">
-       						</form></td>
 						</tr>
 					</tbody>
 					<?php

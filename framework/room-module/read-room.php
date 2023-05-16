@@ -1,5 +1,6 @@
 <!--Display Rooms records page-->
 <body>
+<span id="search-result">
 	<div id="subtitle">
 		<h2>List of Rooms</h2>
 	</div>
@@ -14,7 +15,6 @@
 				<th>Room Floor</th>
 				<th>Room Vacancy</th>
 				<th>Room Status</th>
-				<th>Operation</th>
 			</tr>
 		</thead>
 		<?php
@@ -35,10 +35,6 @@
 							<td><?php echo $room_floor;?></td>
 							<td><?php echo $room_vacancy;?></td>
 							<td><?php echo $room_status;?></td>
-							<td><form action="processes/process.room.php?action=delete" method="POST">
-								<input type="hidden" name="room_id" value="<?php echo $room_id;?>">
-								<input type="submit" value="Delete">
-       						</form></td>
 						</tr>
 					</tbody>
 					<?php

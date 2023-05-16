@@ -11,13 +11,13 @@ class Admin{
 		$this->conn = new PDO("mysql:host=".$this->DB_SERVER.";dbname=".$this->DB_DATABASE,$this->DB_USERNAME,$this->DB_PASSWORD);
 	}
 	/*Function for creating a new admin */
-	public function new_admin($username,$password,$email,$fname,$lname,$cnumber){
+	public function new_admin($username,$password,$email,$fname,$lname,$cnumber,$access){
 		
 		$data = [
-			[$username,$password,$email,$fname,$lname,$cnumber],
+			[$username,$password,$email,$fname,$lname,$cnumber,$access],
 		];
 		/*Stores parameters passed from the creation page inside the database */
-		$stmt = $this->conn->prepare("INSERT INTO admin (adm_username, adm_password, adm_email, adm_fname, adm_lname, adm_cnumber) VALUES (?,?,?,?,?,?)");
+		$stmt = $this->conn->prepare("INSERT INTO admin (adm_username, adm_password, adm_email, adm_fname, adm_lname, adm_cnumber, adm_access) VALUES (?,?,?,?,?,?,?)");
 		try {
 			$this->conn->beginTransaction();
 			foreach ($data as $row)
@@ -34,12 +34,12 @@ class Admin{
 
 	}
 	/*Function for updating an admin */
-	public function update_admin($username,$password,$email,$fname,$lname,$cnumber){
+	public function update_admin($username,$password,$email,$fname,$lname,$cnumber,$access){
 		/*Updates data from the database using the parameters passed from the profile updating page */
-		$sql = "UPDATE admin SET adm_password=:adm_password, adm_email=:adm_email, adm_fname=:adm_fname, adm_lname=:adm_lname, adm_cnumber=:adm_cnumber WHERE adm_username=:adm_username";
+		$sql = "UPDATE admin SET adm_password=:adm_password, adm_email=:adm_email, adm_fname=:adm_fname, adm_lname=:adm_lname, adm_cnumber=:adm_cnumber, adm_access=:adm_access WHERE adm_username=:adm_username";
 
 		$q = $this->conn->prepare($sql);
-		$q->execute(array(':adm_password'=>$password, ':adm_email'=>$email,':adm_fname'=>$fname,':adm_lname'=>$lname,':adm_cnumber'=>$cnumber, ':adm_username'=>$username));
+		$q->execute(array(':adm_password'=>$password, ':adm_email'=>$email,':adm_fname'=>$fname,':adm_lname'=>$lname,':adm_cnumber'=>$cnumber, ':adm_username'=>$username, ':adm_access'=>$access));
 		return true;
 	}
 	/*Function for deleting an admin */
@@ -48,13 +48,31 @@ class Admin{
 		$sql = "DELETE FROM admin WHERE adm_username = :username";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->bindParam(':username', $username);
-
 		if ($stmt->execute()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+
+	public function list_admin_search($keyword){
+		
+		//$keyword = "%".$keyword."%";
+
+		$q = $this->conn->prepare('SELECT * FROM `admin` WHERE (`adm_username`) LIKE ?');
+		$q->bindValue(1, "%$keyword%", PDO::PARAM_STR);
+		$q->execute();
+
+		while($r = $q->fetch(PDO::FETCH_ASSOC)){
+		$data[]= $r;
+		}
+		if(empty($data)){
+		   return false;
+		}else{
+			return $data;	
+		}
+	}
+
 	/*Function that selects all the records from the admin table */
 	public function list_admins(){
 		$sql="SELECT * FROM admin";
@@ -115,6 +133,22 @@ class Admin{
 		$q->execute(['username' => $username]);
 		$cnumber = $q->fetchColumn();
 		return $cnumber;
+	}
+	/*Function for getting the admin access level from the database */
+	function get_adm_access($id){
+		$sql="SELECT adm_access FROM admin WHERE adm_username = :username";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['username' => $username]);
+		$adm_access = $q->fetchColumn();
+		return $adm_access;
+	}
+	/*Function for getting the admin status from the database */
+	function get_adm_status($id){
+		$sql="SELECT adm_status FROM admin WHERE adm_username = :username";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['username' => $username]);
+		$adm_status = $q->fetchColumn();
+		return $adm_status;
 	}
 	/*Function for getting the session from the database for logging in */
 	function get_session(){
