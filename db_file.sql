@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `adm_username` varchar(20) NOT NULL, 
-  `adm_password` varchar(20) NOT NULL,
+  `adm_password` varchar(32) NOT NULL,
   `adm_email` varchar(50) NOT NULL,
   `adm_fname` varchar(50) NOT NULL,
   `adm_lname` varchar(50) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `admin` (
 );
 
 INSERT INTO admin(adm_username,adm_password,adm_email,adm_fname,adm_lname,adm_cnumber,adm_access,adm_status) 
-VALUES ("admin", "123", "admin@admin.com", "Admin", "Admin", 123, "Manager", 0
+VALUES ("admin", "202cb962ac59075b964b07152d234b70", "admin@admin.com", "Admin", "Admin", 123, "Manager", 0
 );
 
 DROP TABLE IF EXISTS `customer`;

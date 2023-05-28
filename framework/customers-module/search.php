@@ -18,7 +18,6 @@ $hint='<div id="subtitle">
         <th>Home Address</th>
         <th>Contact Number</th>
         <th>Status</th>
-        <th>Operation</th>
     </tr>
 </thead>';
 $data = $users->list_customer_search($q);
@@ -35,12 +34,6 @@ if($data != false){
           <td>'.$cust_address.'</td>
           <td>'.$cust_cnumber.'</td>
           <td>'.$cust_status.'</td>
-          <td>
-              <form action="processes/process.customer.php?action=delete" method="POST">
-                  <input type="hidden" name="cust_id" value="'.$cust_id.'">
-                  <input type="submit" value="Delete">
-              </form>
-          </td>
         </tr>
         </tbody>';
     }

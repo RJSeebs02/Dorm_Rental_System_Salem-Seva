@@ -16,7 +16,7 @@ $hint='<div id="subtitle">
         <th>Admin Email</th>
         <th>Admin Name</th>
         <th>Contact Number</th>
-        <th>Operation</th>
+        <th>Access Level</th>
     </tr>
 </thead>';
 $data = $users->list_admin_search($q);
@@ -31,10 +31,7 @@ if($data != false){
 							<td>'.$adm_email.'</td>
         					<td>'.$adm_fname.''.' '.''.$adm_lname.'</a></td>
 							<td>'.$adm_cnumber.'</td>
-							<td><form action="processes/process.admin.php?action=delete" method="POST">
-								<input type="hidden" name="adm_username" value="'.$adm_username.'">
-								<input type="submit" value="Delete">
-       						</form></td>
+                            <td>'.$adm_access.'</td>
 						</tr>
 					</tbody>';
     }

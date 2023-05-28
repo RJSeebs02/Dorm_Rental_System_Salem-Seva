@@ -1,6 +1,8 @@
 <!--Display Customers records page-->
-<span id="search-result">
+
 <body>
+	<a><span class="right">Search <input type="text" id="search" name="search" onkeyup="showResults(this.value)"></span></a>
+	<span id="search-result">
 	<div id="subtitle">
 		<h2>List of Customers</h2>
 	</div>

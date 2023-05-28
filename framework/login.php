@@ -12,7 +12,7 @@ if($admin->get_session()){
 }
 if(isset($_REQUEST['submit'])){
 	extract($_REQUEST);
-	$login = $admin->check_login($username,$password);
+	$login = $admin->check_login($username,md5($password));
 	if($login){
 		header("location: index.php");
 	}else{

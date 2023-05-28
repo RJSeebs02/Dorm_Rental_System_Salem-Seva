@@ -29,7 +29,9 @@ function create_new_admin(){
     $lname = ucfirst($_POST['adm_lname']);
     $cnumber = $_POST['adm_cnumber'];
     $access = $_POST['adm_access'];
-    /*$password = md5($password);*/
+
+    $password = md5($password);
+
     /*Passes the parameters to the class function */
     $result = $admin->new_admin($username,$password,$email,$fname,$lname,$cnumber,$access);
     if($result){
@@ -50,7 +52,6 @@ function update_admin(){
     $cnumber = $_POST['adm_cnumber'];
     $access = $_POST['adm_access'];
     
-    /*$password = md5($password);*/
     /*Passes the parameters to the class function */
     $result = $admin->update_admin($username,$password,$email,$fname,$lname,$cnumber,$access);
     if($result){

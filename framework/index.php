@@ -34,6 +34,7 @@ if(!$admin->get_session()){
 	header("location: login.php");
 }
 $admin_user = $admin->get_username($_SESSION['adm_username']);
+$admin_user_login = $admin_user;
 ?>
 
 <!--Main Index HTML page of the web application-->
@@ -59,7 +60,7 @@ $admin_user = $admin->get_username($_SESSION['adm_username']);
 				<span class="hover"><a href="index.php?page=admins"><i class="fa-sharp fa-solid fa-user-tie"></i>&nbspAdmins</a> &nbsp</span>
 				<span class="hover"><a href="index.php?page=transactions"><i class="fa-solid fa-cash-register"></i>&nbspTransaction Types</a> &nbsp</span>
 				<span class="hover"><a href="logout.php" class="right">Logout</a></span>
-				<span class="right">Hello &nbsp<?php echo $admin->get_fname($admin_user).' '.$admin->get_lname($admin_user);?>!&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</span> 
+				<span class="right">Hello &nbsp<?php echo $admin->get_fname($admin_user).' '.$admin->get_lname($admin_user).'&nbsp;!&nbsp;&nbsp;-&nbsp;&nbsp;<b>'.$admin->get_adm_access($admin_user);?></b>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</span> 
 			</div>
 	</div>
 	</header>

@@ -135,7 +135,7 @@ class Admin{
 		return $cnumber;
 	}
 	/*Function for getting the admin access level from the database */
-	function get_adm_access($id){
+	function get_adm_access($username){
 		$sql="SELECT adm_access FROM admin WHERE adm_username = :username";	
 		$q = $this->conn->prepare($sql);
 		$q->execute(['username' => $username]);
@@ -143,7 +143,7 @@ class Admin{
 		return $adm_access;
 	}
 	/*Function for getting the admin status from the database */
-	function get_adm_status($id){
+	function get_adm_status($username){
 		$sql="SELECT adm_status FROM admin WHERE adm_username = :username";	
 		$q = $this->conn->prepare($sql);
 		$q->execute(['username' => $username]);

@@ -1,6 +1,7 @@
 <!--Display Rooms records page-->
 <body>
-<span id="search-result">
+	<a><span class="right">Search <input type="text" id="search" name="search" onkeyup="showResults(this.value)"></span></a>
+	<span id="search-result">
 	<div id="subtitle">
 		<h2>List of Rooms</h2>
 	</div>

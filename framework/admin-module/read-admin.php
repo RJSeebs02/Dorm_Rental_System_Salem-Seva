@@ -1,5 +1,6 @@
 <!--Display admin records page-->
 <body>
+	<a><span class="right">Search <input type="text" id="search" name="search" onkeyup="showResults(this.value)"></span></a>
 	<span id="search-result">
 	<div id="subtitle">
 		<h2>List of Admins</h2>
@@ -11,7 +12,7 @@
         		<th>Admin Email</th>
         		<th>Admin Name</th>
 				<th>Contact Number</th>
-				<th>Access</th>
+				<th>Access Level</th>
 			</tr>
 		</thead>
 		<?php

@@ -25,7 +25,6 @@ function showResults(str) {
         <!--Submenu/Navigation bar for Customers Page-->
         <a href="index.php?page=customers&subpage=records"><i class="fa-solid fa-list"></i>&nbspList of Customers</a>&nbsp&nbsp
         <a href="index.php?page=customers&subpage=create"><i class="fa-sharp fa-solid fa-plus"></i>&nbspCreate New Customer</a>
-        <a><span class="right">Search <input type="text" id="search" name="search" onkeyup="showResults(this.value)"></span></a>
     </div>
     <div id="subcontent">
         <?php
