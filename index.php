@@ -50,6 +50,9 @@ $admin_user_login = $admin_user;
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<header>
+	<div id="logo">
+		<span class="right"><img src='images/Logo.jpg'></span>
+	</div>
 	<div id="navbar">
 		<h4>Bacolod Gateway Dormitory</h4>
 		<h1>Dormitory Rental System</h1>

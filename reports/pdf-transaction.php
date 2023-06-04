@@ -1,11 +1,11 @@
 <?php
 // ob_start();
 
-include_once '../class/class.admin.php';
+include_once '../class/class.transaction.php';
 include '../config/config.php';
 require('../fpdf185/fpdf.php');
 
-$admin = new Admin();
+$transaction = new Transaction();
 
 class PDF extends FPDF
 {
@@ -25,7 +25,7 @@ function Header(){
         $this->Cell(0,6,"",0,1,'C',1);
     
         $this->SetFont('Arial','B',12);
-        $this->Cell(0,6,"- System Users -",0,1,'C',1);
+        $this->Cell(0,6,"- Transaction Type -",0,1,'C',1);
     
         $this->SetFont('Arial','BIU',10);
         $this->Cell(0,6,"".date("Y-m-d")." ",0,1,'C',1);
@@ -62,24 +62,20 @@ $pdf->SetFont('Arial','B',12);
 //$header=array('Nbr','Name','Access Level','E-Mail');
 //$pdf->BasicTable($header);
 // Custom Header
-$pdf->Cell(10,12,"No.",1,0,'C');
-$pdf->Cell(30,12,"Username",1,0,'C');
-$pdf->Cell(50,12,"E-mail",1,0,'C');
-$pdf->Cell(33,12,"Name",1,0,'C');
-$pdf->Cell(37,12,"Contact Number",1,0,'C');
-$pdf->Cell(30,12,"Access Level",1,0,'C');
+$pdf->SetX(70);
+$pdf->Cell(20,12,"No.",1,0,'C');
+$pdf->Cell(50,12,"Description",1,0,'C');
+
 $pdf->Ln(10);
 $pdf->SetFont('Arial','',12);
 $count = 1;
-if($admin->list_admins() != false){
-    foreach($admin->list_admins() as $value){
+if($transaction->list_transactions() != false){
+    foreach($transaction->list_transactions() as $value){
         extract($value);
-                $pdf->Cell(10,12,"  ".$count,0,0,'L');
-                $pdf->Cell(30,12,$adm_username,0,0,'L');
-                $pdf->Cell(50,12,$adm_email,0,0,'L');
-                $pdf->Cell(33,12,$adm_fname.' '.$adm_lname,0,0,'L');
-                $pdf->Cell(37,12,$adm_cnumber,0,0,'L');
-                $pdf->Cell(30,12,$adm_access,0,0,'L');
+                $pdf->SetX(70);
+                $pdf->Cell(20,12,"  ".$count,0,0,'C');
+                $pdf->Cell(50,12,$type_description,0,0,'C');
+
                 $pdf->Ln(6);
                 $count++;
     }

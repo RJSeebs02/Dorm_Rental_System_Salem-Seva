@@ -5,6 +5,8 @@ $users = new Admin();
 
 // get the q parameter from URL
 $q = $_GET["q"];
+
+
 $count = 1;
 $hint='<div id="subtitle">
 <h2>List of Admins</h2>
@@ -12,7 +14,6 @@ $hint='<div id="subtitle">
 <table id="tablerecords">
 <thead>
     <tr>
-        <th>Admin ID</th>
         <th>Admin Username</th>
         <th>Admin Email</th>
         <th>Admin Name</th>
@@ -26,10 +27,9 @@ if($data != false){
         extract($value);
 
         $hint .= '
-        <tbody>
+                    <tbody>
       					<tr>
-                            <td>'.$adm_id.'</td>
-        					<td><a href="index.php?page=admins&subpage=profile&id='.$adm_id.'">'.$adm_username.'</td>
+        					<td><a href="index.php?page=admins&subpage=profile&id='.$adm_username.'">'.$adm_username.'</td>
 							<td>'.$adm_email.'</td>
         					<td>'.$adm_fname.''.' '.''.$adm_lname.'</a></td>
 							<td>'.$adm_cnumber.'</td>

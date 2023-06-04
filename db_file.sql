@@ -5,7 +5,7 @@ CREATE TABLE `admin` (
   `adm_email` varchar(50) NOT NULL,
   `adm_fname` varchar(50) NOT NULL,
   `adm_lname` varchar(50) NOT NULL,
-  `adm_cnumber` int(20) NOT NULL,
+  `adm_cnumber` bigint(20) NOT NULL,
   `adm_access` varchar(255) NOT NULL,
   `adm_status` int(1) NOT NULL,
   PRIMARY KEY  (`adm_username`)
@@ -23,7 +23,7 @@ CREATE TABLE `customer` (
   `cust_lname` varchar(50) NOT NULL,
   `cust_email` varchar(50) NOT NULL,
   `cust_address` varchar(100) NOT NULL,
-  `cust_cnumber` int(20) NOT NULL,
+  `cust_cnumber` bigint(20) NOT NULL,
   `cust_status` varchar(50) NOT NULL,
   PRIMARY KEY  (`cust_id`)
 );

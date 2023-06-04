@@ -277,5 +277,72 @@ class Rent{
 		$date_added = $q->fetchColumn();
 		return $date_added;
 	}
+
+	//INNER JOIN Functions
+
+	/*INNER JOIN Function for getting the customer firstname from the database */
+	function get_cust_fname_display($id){
+		$sql="SELECT cust_fname FROM customer INNER JOIN rent WHERE rent.cust_id = customer.cust_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_cust_fname = $q->fetchColumn();
+		return $rent_cust_fname;
+	}
+	/*INNER JOIN Function for getting the customer middlename from the database */
+	function get_cust_mname_display($id){
+		$sql="SELECT cust_mname FROM customer INNER JOIN rent WHERE rent.cust_id = customer.cust_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_cust_mname = $q->fetchColumn();
+		return $rent_cust_mname;
+	}
+	/*INNER JOIN Function for getting the customer lastname from the database */
+	function get_cust_lname_display($id){
+		$sql="SELECT cust_lname FROM customer INNER JOIN rent WHERE rent.cust_id = customer.cust_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_cust_lname = $q->fetchColumn();
+		return $rent_cust_lname;
+	}
+	/*INNER JOIN Function for getting the room number from the database */
+	function get_room_number_display($id){
+		$sql="SELECT room_number FROM room INNER JOIN rent WHERE rent.room_id = room.room_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_room_number = $q->fetchColumn();
+		return $rent_room_number;
+	}
+	/*INNER JOIN Function for getting the transaction type description from the database */
+	function get_transaction_type_description_display($id){
+		$sql="SELECT type_description FROM transaction_type INNER JOIN rent WHERE rent.type_id = transaction_type.type_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_type_desc = $q->fetchColumn();
+		return $rent_type_desc;
+	}
+	/*INNER JOIN Function for getting the customer email from the database */
+	function get_cust_email_display($id){
+		$sql="SELECT cust_email FROM customer INNER JOIN rent WHERE rent.cust_id = customer.cust_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_cust_email = $q->fetchColumn();
+		return $rent_cust_email;
+	}
+	/*INNER JOIN Function for getting the customer contact number from the database */
+	function get_cust_cnumber_display($id){
+		$sql="SELECT cust_cnumber FROM customer INNER JOIN rent WHERE rent.cust_id = customer.cust_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_cust_cnumber = $q->fetchColumn();
+		return $rent_cust_cnumber;
+	}
+	/*INNER JOIN Function for getting the customer address from the database */
+	function get_cust_address_display($id){
+		$sql="SELECT cust_address FROM customer INNER JOIN rent WHERE rent.cust_id = customer.cust_id AND rent_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$rent_cust_address = $q->fetchColumn();
+		return $rent_cust_address;
+	}
 }
 ?>

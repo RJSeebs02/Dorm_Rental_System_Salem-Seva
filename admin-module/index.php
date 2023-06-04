@@ -27,7 +27,6 @@ function showResults(str) {
     <!--Submenu/Navigation bar for Admins Page-->
     <div id="submenu">
         <a href="index.php?page=admins&subpage=records"><i class="fa-solid fa-list"></i>&nbspList of Admins</a>
-        <a><span class="right"><i class="fa-solid fa-eye-slash"></i>&nbspUSER HAS NO ACCESS TO OTHER NAVIGATIONS</span></a>
     </div>
     <div id="subcontent">
         <?php

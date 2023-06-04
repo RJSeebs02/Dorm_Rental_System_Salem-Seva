@@ -52,10 +52,10 @@
 	if ($admin->get_adm_access($admin_user) == 'Manager' || $admin->get_adm_access($admin_user) == 'Supervisor'){
 		?>
 		<div class="download-button">	
-			<form method="POST" action="reports/xlsx-customers-report.php?action=print">
+			<form method="POST" action="reports/xlsx-customers-report.php">
 				<button><a><i class="fa fa-download"></i> Excel</a></button>
 			</form>
-			<form method="POST" action="reports/pdf-user.php?action=print">
+			<form method="POST" action="reports/pdf-customers.php">
 				<span><button><a><i class="fa fa-download"></i> PDF</a></button></span>
 			</form>
 		</div>

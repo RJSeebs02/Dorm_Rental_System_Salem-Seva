@@ -81,8 +81,6 @@ $colorsBG = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 8
             datasets: [{
                 label: 'Rent Counts',
                 data: <?php echo json_encode($counts) ?>,
-                backgroundColor: <?php echo json_encode($colors) ?>,
-                borderColor: <?php echo json_encode($colorsBG) ?>,
                 borderWidth: 1
             }]
         },

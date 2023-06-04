@@ -28,6 +28,11 @@ html{
 	color: #7A95FF;
 	transition: 0.2s;
 }
+#logo img{
+	margin-top: 10px;
+	margin-right: 20px;
+	width: 100px;
+}
 .right{
 	float: right;
 }
@@ -100,6 +105,11 @@ body #content{
 #page-title{
 	margin: 20px;
 	text-align: center;
+	justify-content: center;
+}
+#page-title img{
+	margin-top: 20px;
+	width: 320px;
 }
 #page-title h1{
 	padding-top: 20px;
@@ -108,6 +118,10 @@ body #content{
 }
 #wrapper{
 background-color: white;
+}
+#submenu{
+	padding: 10px 10px 10px 10px;
+	background-color: #2E303A;
 }
 #wrapper #submenu{
 	padding: 10px 10px 10px 10px;
@@ -252,4 +266,12 @@ select{
 
 #wrapper #chartsubmenu a{
 	color: white;
+}
+
+#maindesc{
+	margin: auto;
+	width: 620px;
+	text-align: justify;
+  text-justify: inter-word;
+  padding-bottom: 15px;
 }

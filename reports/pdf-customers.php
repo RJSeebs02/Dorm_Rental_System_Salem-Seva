@@ -1,11 +1,11 @@
 <?php
 // ob_start();
 
-include_once '../class/class.admin.php';
+include_once '../class/class.customer.php';
 include '../config/config.php';
 require('../fpdf185/fpdf.php');
 
-$admin = new Admin();
+$customer = new Customer();
 
 class PDF extends FPDF
 {
@@ -25,7 +25,7 @@ function Header(){
         $this->Cell(0,6,"",0,1,'C',1);
     
         $this->SetFont('Arial','B',12);
-        $this->Cell(0,6,"- System Users -",0,1,'C',1);
+        $this->Cell(0,6,"- Customer Reports -",0,1,'C',1);
     
         $this->SetFont('Arial','BIU',10);
         $this->Cell(0,6,"".date("Y-m-d")." ",0,1,'C',1);
@@ -63,23 +63,23 @@ $pdf->SetFont('Arial','B',12);
 //$pdf->BasicTable($header);
 // Custom Header
 $pdf->Cell(10,12,"No.",1,0,'C');
-$pdf->Cell(30,12,"Username",1,0,'C');
+$pdf->Cell(45,12,"Name",1,0,'C');
 $pdf->Cell(50,12,"E-mail",1,0,'C');
-$pdf->Cell(33,12,"Name",1,0,'C');
-$pdf->Cell(37,12,"Contact Number",1,0,'C');
-$pdf->Cell(30,12,"Access Level",1,0,'C');
+$pdf->Cell(33,12,"Home Address",1,0,'C');
+$pdf->Cell(30,12,"Contact No.",1,0,'C');
+$pdf->Cell(22,12,"Status",1,0,'C');
 $pdf->Ln(10);
 $pdf->SetFont('Arial','',12);
 $count = 1;
-if($admin->list_admins() != false){
-    foreach($admin->list_admins() as $value){
+if($customer->list_customers() != false){
+    foreach($customer->list_customers() as $value){
         extract($value);
                 $pdf->Cell(10,12,"  ".$count,0,0,'L');
-                $pdf->Cell(30,12,$adm_username,0,0,'L');
-                $pdf->Cell(50,12,$adm_email,0,0,'L');
-                $pdf->Cell(33,12,$adm_fname.' '.$adm_lname,0,0,'L');
-                $pdf->Cell(37,12,$adm_cnumber,0,0,'L');
-                $pdf->Cell(30,12,$adm_access,0,0,'L');
+                $pdf->Cell(45,12,$cust_fname.' '.$cust_mname.' '.$cust_lname,0,0,'L');
+                $pdf->Cell(50,12,$cust_email,0,0,'L');
+                $pdf->Cell(33,12,$cust_address,0,0,'L');
+                $pdf->Cell(30,12,$cust_cnumber,0,0,'L');
+                $pdf->Cell(22,12,$cust_status,0,0,'L');
                 $pdf->Ln(6);
                 $count++;
     }

@@ -1,11 +1,11 @@
 <?php
 // ob_start();
 
-include_once '../class/class.rent.php';
+include_once '../class/class.room.php';
 include '../config/config.php';
 require('../fpdf185/fpdf.php');
 
-$rent = new Rent();
+$room = new Room();
 
 class PDF extends FPDF
 {
@@ -25,7 +25,7 @@ function Header(){
     $this->Cell(0,6,"",0,1,'C',1);
 
     $this->SetFont('Arial','B',12);
-    $this->Cell(0,6,"- Rent Reports -",0,1,'C',1);
+    $this->Cell(0,6,"- Room Reports -",0,1,'C',1);
 
     $this->SetFont('Arial','BIU',10);
 	$this->Cell(0,6,"".date("Y-m-d")." ",0,1,'C',1);
@@ -63,25 +63,27 @@ $pdf->SetFont('Arial','B',10);
 //$pdf->BasicTable($header);
 // Custom Header
 $pdf->Cell(10,12,"No.",1,0,'C');
-$pdf->Cell(45,12,"Name",1,0,'C');
-$pdf->Cell(48,12,"E-mail",1,0,'C');
-$pdf->Cell(30,12,"Home Address",1,0,'C');
-$pdf->Cell(25,12,"Contact No.",1,0,'C');
-$pdf->Cell(14,12,"Rm No.",1,0,'C');
-$pdf->Cell(20,12,"Type",1,0,'C');
+$pdf->Cell(20,12,"Room No.",1,0,'C');
+$pdf->Cell(25,12,"Room Type",1,0,'C');
+$pdf->Cell(48,12,"Description",1,0,'C');
+$pdf->Cell(20,12,"Price",1,0,'C');
+$pdf->Cell(22,12,"Room Floor",1,0,'C');
+$pdf->Cell(20,12,"Vacancy",1,0,'C');
+$pdf->Cell(25,12,"Room Status",1,0,'C');
 $pdf->Ln(10);
 $pdf->SetFont('Arial','',12);
 $count = 1;
-if($rent->list_rent() != false){
-    foreach($rent->list_rent() as $value){
+if($room->list_rooms() != false){
+    foreach($room->list_rooms() as $value){
         extract($value);
                 $pdf->Cell(10,12,"  ".$count,0,0,'L');
-                $pdf->Cell(45,12,$rent->get_cust_fname($cust_id).' '.$rent->get_cust_mname($cust_id).' '.$rent->get_cust_lname($cust_id),0,0,'L');
-                $pdf->Cell(48,12,$rent->get_cust_email($cust_id),0,0,'L');
-                $pdf->Cell(30,12,$rent->get_cust_address($cust_id),0,0,'L');
-                $pdf->Cell(25,12,$rent->get_cust_cnumber($cust_id),0,0,'L');
-                $pdf->Cell(14,12,$rent->get_room_number($room_id),0,0,'C');
-                $pdf->Cell(20,12,$rent->get_transaction_type_description($type_id),0,0,'L');
+                $pdf->Cell(20,12,$room_number,0,0,'C');
+                $pdf->Cell(25,12,$room_type,0,0,'L');
+                $pdf->Cell(48,12,$room_desc,0,0,'L');
+                $pdf->Cell(20,12,$room_price,0,0,'C');
+                $pdf->Cell(22,12,$room_floor,0,0,'C');
+                $pdf->Cell(20,12,$room_vacancy,0,0,'C');
+                $pdf->Cell(25,12,$room_status,0,0,'L');
                 $pdf->Ln(6);
                 $count++;
     }

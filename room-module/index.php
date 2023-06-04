@@ -27,7 +27,6 @@ function showResults(str) {
     <div id="submenu">
         <!--Submenu/Navigation bar for Room Page-->
         <a href="index.php?page=rooms&subpage=records"><i class="fa-solid fa-list"></i>&nbspList of Rooms</a>
-        <a><span class="right"><i class="fa-solid fa-eye-slash"></i>&nbspUSER HAS NO ACCESS TO OTHER NAVIGATIONS</span></a>
     </div>
     <div id="subcontent">
         <?php
