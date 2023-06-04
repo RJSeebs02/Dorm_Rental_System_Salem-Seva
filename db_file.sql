@@ -57,5 +57,7 @@ CREATE TABLE `transaction_type` (
   PRIMARY KEY  (`rent_id`),
   KEY (`cust_id`),
   KEY (`room_id`),
-  KEY (`type_id`)
+  KEY (`type_id`),
+  `date_added` date NOT NULL,
+  `time_added` time NOT NULL
 );
