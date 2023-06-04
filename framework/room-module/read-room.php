@@ -51,4 +51,19 @@
 			}
 			?>
     	</table>
+
+		<?php
+	if ($admin->get_adm_access($admin_user) == 'Manager' || $admin->get_adm_access($admin_user) == 'Supervisor'){
+		?>
+		<div class="download-button">	
+			<form method="POST" action="reports/xlsx-rooms-report.php?action=print">
+				<button><a><i class="fa fa-download"></i> Excel</a></button>
+			</form>
+			<form method="POST" action="reports/pdf-user.php?action=print">
+				<span><button><a><i class="fa fa-download"></i> PDF</a></button></span>
+			</form>
+		</div>
+		<?php
+	}
+?>
 </body>

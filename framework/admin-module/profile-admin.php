@@ -55,6 +55,7 @@ if($admin->get_adm_access($admin_user) == 'Staff'){
     <h2><?php echo $admin->get_username($id).' ';?>Profile</h2>
 </div>
 <div class="form-wrapper">
+<div id="error"></div>
     <form method="POST" action="processes/process.admin.php?action=update"> <!---Executes process after clicking the update/submit button-->
         <div id="form-half">
             <label for="adm_username">Username: </label>
@@ -94,21 +95,23 @@ if($admin->get_adm_access($admin_user) == 'Staff'){
 <?php
 }else{
 ?>
+<script src="javascript/script.js">
 
+</script>
 <div id="subtitle">
     <h2><?php echo $admin->get_username($id).' ';?>Profile</h2>
 </div>
 <div class="form-wrapper">
-    <form method="POST" action="processes/process.admin.php?action=update"> <!---Executes process after clicking the update/submit button-->
+    <form method="POST" action="processes/process.admin.php?action=update" onsubmit="return ValidateForm()"> <!---Executes process after clicking the update/submit button-->
         <div id="form-half">
             <label for="adm_username">Username: </label>
-            <input type="text" id="adm_username" class="text" name="adm_username" value="<?php echo $admin->get_username($id);?>" readonly>
+            <input type="text" id="adm_username" class="text" name="adm_username" value="<?php echo $admin->get_username($id);?>" required>
             
             <label for="adm_email">Email Address: </label>
 		    <input type="text" id="adm_email" class="text" name="adm_email" value="<?php echo $admin->get_email($id);?>" placeholder="Enter Email Address..." required>
 
             <label for="adm_password">Password: </label>
-		    <input type="password" id="adm_password" class="text" name="adm_password" value="<?php echo $admin->get_password($id);?>" placeholder="Enter Password..." readonly>
+		    <input type="password" id="adm_password" class="text" name="adm_password" value="<?php echo $admin->get_password($id);?>" placeholder="Enter Password..." required>
             
             <label for="adm_access">Access Level</label>
             <select id="adm_access" name="adm_access">
@@ -117,7 +120,7 @@ if($admin->get_adm_access($admin_user) == 'Staff'){
                 <option value="Manager" <?php if($admin->get_adm_access($id) == "Manager"){ echo "selected";};?>>Manager</option>
             </select>
 
-            <input type="submit" value="Update"> <!--Button that passes parameters input to the process file--->
+            <input type="submit" value="UPDATE"> <!--Button that passes parameters input to the process file--->
         </div>
         <div id="form-half">
             <label for="adm_fname">First Name: </label>

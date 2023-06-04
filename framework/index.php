@@ -15,6 +15,7 @@ include_once 'class/class.customer.php';
 include_once 'class/class.room.php';
 include_once 'class/class.rent.php';
 include_once 'class/class.transaction.php';
+include_once 'class/class.charts.php';
 include 'config/config.php';
 
 /*Parameter variables for the navbar*/
@@ -28,6 +29,7 @@ $customer = new Customer();
 $room = new Room();
 $rent = new Rent();
 $transaction = new Transaction();
+$charts = new Charts();
 
 /*Login Verifier (Deploys Login Check Method from another file)*/
 if(!$admin->get_session()){
@@ -54,7 +56,8 @@ $admin_user_login = $admin_user;
 			<div id="navbar-contents">	
 				<!-- Navigation Bar consists of icons from fontawesome.com which was inserted in the CSS file-->
 				<span class="hover"><a href="index.php"><i class="fa-sharp fa fa-house"></i>&nbspHome</a> &nbsp</span>
-				<span class="hover"><a href="index.php?page=rent"><i class="fa-sharp fa-solid fa-pen-to-square"></i>&nbspRent</a> &nbsp||&nbsp</span>
+				<span class="hover"><a href="index.php?page=rent"><i class="fa-sharp fa-solid fa-pen-to-square"></i>&nbspRent</a> &nbsp</span>
+				<span class="hover"><a href="index.php?page=charts"><i class="fa-solid fa-chart-simple"></i>&nbspCharts</a> &nbsp||&nbsp</span>
 				<span class="hover"><a href="index.php?page=customers"><i class="fa-sharp fa-solid fa-users"></i>&nbspCustomers</a> &nbsp</span>
 				<span class="hover"><a href="index.php?page=rooms"><i class="fa-sharp fa-solid fa-door-closed"></i>&nbspRooms</a> &nbsp</span>
 				<span class="hover"><a href="index.php?page=admins"><i class="fa-sharp fa-solid fa-user-tie"></i>&nbspAdmins</a> &nbsp</span>
@@ -72,6 +75,10 @@ $admin_user_login = $admin_user;
 				/*Displays Rental Page*/
                 case 'rent':
                     require_once 'rent-module/index.php';
+                break;
+				/*Displays Charts Page*/
+                case 'charts':
+                    require_once 'charts/index.php';
                 break;
 				/*Displays Customers Page*/
                 case 'customers':

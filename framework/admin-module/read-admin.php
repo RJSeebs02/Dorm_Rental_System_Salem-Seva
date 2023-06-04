@@ -8,6 +8,7 @@
 	<table id="tablerecords">
     	<thead>
         	<tr>
+
 				<th>Admin Username</th>
         		<th>Admin Email</th>
         		<th>Admin Name</th>
@@ -24,8 +25,9 @@
 					?>
 					<tbody>
       					<tr>
+	
 							<!--Redirects to the profile page if clicked-->
-        					<td><a href="index.php?page=admins&subpage=profile&id=<?php echo $adm_username; ?>"><?php echo $adm_username;?></td>
+        					<td><a href="index.php?page=admins&subpage=profile&id=<?php echo $adm_username ?>"><?php echo $adm_username;?></td>
 							<td><?php echo $adm_email;?></td>
         					<td><?php echo $adm_fname.' '.$adm_lname;?></a></td>
 							<td><?php echo $adm_cnumber;?></td>
@@ -45,4 +47,21 @@
 			}
 			?>
     </table>
+	
+
+	<?php
+	if ($admin->get_adm_access($admin_user) == 'Manager' || $admin->get_adm_access($admin_user) == 'Supervisor'){
+		?>
+		<div class="download-button">	
+			<form method="POST" action="reports/xlsx-admin-report.php">
+				<button><a><i class="fa fa-download"></i> Excel</a></button>
+			</form>
+			<form method="POST" action="reports/pdf-admin.php">
+				<span><button><a><i class="fa fa-download"></i> PDF</a></button></span>
+			</form>
+		</div>
+		<?php
+	}
+?>
+
 </body>

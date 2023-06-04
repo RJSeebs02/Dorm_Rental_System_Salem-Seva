@@ -14,11 +14,15 @@ class Rent{
 	/*Function for creating a new rent */
 	public function new_rent($rrentcust,$rrentroom,$rrenttransaction){
 		
+		/* Setting Timezone for DB */
+		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+		$NOW = $NOW->format('Y-m-d H:i:s');
+
 		$data = [
-			[$rrentcust,$rrentroom,$rrenttransaction],
+			[$rrentcust,$rrentroom,$rrenttransaction,$NOW,$NOW],
 		];
 		/*Stores parameters passed from the creation page inside the database */
-		$stmt = $this->conn->prepare("INSERT INTO rent (cust_id, room_id, type_id) VALUES (?,?,?)");
+		$stmt = $this->conn->prepare("INSERT INTO rent (cust_id, room_id, type_id, date_added, time_added) VALUES (?,?,?,?,?)");
 		try {
 			$this->conn->beginTransaction();
 			foreach ($data as $row)
@@ -264,6 +268,14 @@ class Rent{
 		$q->execute(['id' => $id]);
 		$type_desc = $q->fetchColumn();
 		return $type_desc;
+	}
+	/*Function for getting the transaction type description from the database */
+	function get_date_added($id){
+		$sql="SELECT date_added FROM rent WHERE rent_id = :rent_id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['rent_id' => $id]);
+		$date_added = $q->fetchColumn();
+		return $date_added;
 	}
 }
 ?>
