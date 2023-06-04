@@ -21,7 +21,7 @@
 		    	<input type="email" id="adm_email" class="text" name="adm_email" placeholder="Enter Email Address..." required>
 
 				<label for="adm_password">Password: </label>
-		    	<input type="text" id="adm_password" class="text" name="adm_password" placeholder="Enter Password..." required>
+		    	<input type="password" id="adm_password" class="text" name="adm_password" placeholder="Enter Password..." required>
 
 				<label for="adm_access">Access Level</label>
             	<select id="adm_access" name="adm_access">
