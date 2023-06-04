@@ -189,14 +189,7 @@ class Rent{
 		$room_id1 = $q->fetchColumn();
 		return $room_id1;
 	}
-	/*Function for getting the room number from the database */
-	function get_room_number($id){
-		$sql="SELECT room_number FROM room WHERE room_id = :room_id";	
-		$q = $this->conn->prepare($sql);
-		$q->execute(['room_id' => $id]);
-		$room_number = $q->fetchColumn();
-		return $room_number;
-	}
+	
 	/*Function for getting the room vacancy from the database */
 	function get_room_vacancy($id){
 		$sql="SELECT room_vacancy FROM room WHERE room_id = :room_id";	
@@ -263,11 +256,19 @@ class Rent{
 	}
 	/*Function for getting the transaction type description from the database */
 	function get_transaction_type_description($id){
-		$sql="SELECT type_description FROM transaction_type WHERE type_id = :id";	
+		$sql="SELECT type_description FROM transaction_type WHERE type_id = :type_id";	
 		$q = $this->conn->prepare($sql);
-		$q->execute(['id' => $id]);
-		$type_desc = $q->fetchColumn();
-		return $type_desc;
+		$q->execute(['type_id' => $id]);
+		$type_description = $q->fetchColumn();
+		return $type_description;
+	}
+	/*Function for getting the room number from the database */
+	function get_room_number($id){
+		$sql="SELECT room_number FROM room WHERE room_id = :room_id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['room_id' => $id]);
+		$room_number = $q->fetchColumn();
+		return $room_number;
 	}
 	/*Function for getting the transaction type description from the database */
 	function get_date_added($id){
@@ -343,6 +344,24 @@ class Rent{
 		$q->execute(['id' => $id]);
 		$rent_cust_address = $q->fetchColumn();
 		return $rent_cust_address;
+	}
+
+	public function list_customer_search($keyword){
+		
+		//$keyword = "%".$keyword."%";
+
+		$q = $this->conn->prepare('SELECT * FROM `customer` INNER JOIN rent on rent.cust_id = customer.cust_id INNER JOIN room on rent.room_id = room.room_id INNER JOIN transaction_type on rent.type_id = transaction_type.type_id WHERE (`cust_fname`) LIKE ?');
+		$q->bindValue(1, "%$keyword%", PDO::PARAM_STR);
+		$q->execute();
+
+		while($r = $q->fetch(PDO::FETCH_ASSOC)){
+		$data[]= $r;
+		}
+		if(empty($data)){
+		   return false;
+		}else{
+			return $data;	
+		}
 	}
 }
 ?>

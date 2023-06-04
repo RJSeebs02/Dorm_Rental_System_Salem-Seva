@@ -1,4 +1,21 @@
 <!--Index File for Rent Page-->
+<script>
+function showResults(str) {
+  if (str.length == 0) {
+    document.getElementById("search-result").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("search-result").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "rent-module/search.php?q=" + str, true);
+    xmlhttp.send();
+  }
+}
+</script>
 <div id="page-title">
     <h1><i class="fa-sharp fa-solid fa-pen-to-square"></i>&nbspRental</h1>
 </div>    
