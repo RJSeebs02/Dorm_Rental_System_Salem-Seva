@@ -47,3 +47,111 @@ function ValidateForm() {
 
     return true; // Allow form submission
 }
+
+function ValidateFormCust() {
+    // Retrieve the form inputs
+    var contactNum = document.getElementById('cnumber').value;
+    var firstName = document.getElementById('fname').value;
+    var middleName = document.getElementById('mname').value;
+    var lastName = document.getElementById('lname').value;
+    var HomeAddress = document.getElementById('address').value;
+
+    // Regular expression patterns
+    var addressPattern = /^[a-zA-Z0-9, ]+$/; // Only alphabets,numbers,commas, and spaces allowed
+    var contactPattern = /^\d{11}$/; // Exactly 11 digits allowed
+    var fnamePattern = /^[a-zA-Z ]+$/; // Only alphabets are allowed
+    var mnamePattern = /^[a-zA-Z ]+$/; // Only alphabets are allowed
+    var lnamePattern = /^[a-zA-Z ]+$/; // Only alphabets are allowed
+    
+
+    // Validate Contact Number
+    if (!contactPattern.test(contactNum)) {
+        alert('Please enter a valid Contact Number (Exactly 11 digits are allowed)');
+        return false;
+    }
+
+    // Validate First Name
+    if (!fnamePattern.test(firstName)) {
+        alert('Please enter a valid First Name (Only alphabets are allowed!)');
+        return false;
+    }
+
+    // Validate Middle Name
+    if (!mnamePattern.test(middleName)) {
+        alert('Please enter a valid Middle Name (Only alphabets are allowed!)');
+        return false;
+    }
+
+    // Validate Last Name
+    if (!lnamePattern.test(lastName)) {
+        alert('Please enter a valid Last Name (Only alphabets are allowed!)');
+        return false;
+    }
+
+    //Validate Home Address
+    if (!addressPattern.test(HomeAddress)) {
+        alert('Please enter a valid Address (Should include a comma, number, and letters)');
+        return false;
+    }
+    
+
+    return true; // Allow form submission
+}
+
+function ValidateFormRoom() {
+    // Retrieve the form inputs
+    var RoomNum = document.getElementById('room_number').value;
+    var RoomType = document.getElementById('room_type').value;
+    var RoomDesc = document.getElementById('room_desc').value;
+    var RoomPrice = document.getElementById('room_price').value;
+    var RoomFloor = document.getElementById('room_floor').value;
+    var RoomVacancy = document.getElementById('room_vacancy').value;
+
+    // Regular expression patterns
+    var rmint = /^[0-9 ]+$/; // Only numbers allowed
+    var rmchar = /^[a-zA-Z ]+$/; // Exactly letters allowed
+    var rmintchar = /^[a-zA-Z0-9 ]+$/; // Numbers and Letters allowed
+
+    
+    
+
+    // Validate Room Number
+    if (!rmint.test(RoomNum)) {
+        alert('Enter Valid Room Number (Enter numbers only!)');
+        return false;
+    }
+
+    // Validate Room Type
+    if (!rmchar.test(RoomType)) {
+        alert('Enter Valid Room Type (Enter numbers only!)');
+        return false;
+    }
+
+    // Validate Room Description
+    if (!rmintchar.test(RoomDesc)) {
+        alert('Enter Valid Room Description (Enter numbers and letters only!)');
+        return false;
+    }
+
+    // Validate Room Price
+    if (!rmint.test(RoomPrice)) {
+        alert('Enter Valid Room Price (Enter numbers only!)');
+        return false;
+    }
+
+    // Validate Room Floor
+    if (!rmintchar.test(RoomFloor)) {
+        alert('Enter Valid Room Floor (Enter numbers and letters only!)');
+        return false;
+    }
+
+    // Validate Room Vacancy
+    if (!rmint.test(RoomVacancy)) {
+        alert('Enter Valid Room Vacancy (Enter numbers only!)');
+        return false;
+    }
+    
+    return true; // Allow form submission
+}
+
+

@@ -44,12 +44,14 @@ if($admin->get_adm_access($admin_user) == 'Staff'){
 <?php
 }else{
 ?>
-
+<script src="javascript/script.js">
+    
+</script>
 <div id="subtitle">
     <h2>Room No. <?php echo $room->get_room_number($id).' ';?>Profile</h2>
 </div>
 <div class="form-wrapper">
-    <form method="POST" action="processes/process.room.php?action=update"> <!--Process for updating a room will be executed once submit button is clicked--->
+    <form method="POST" action="processes/process.room.php?action=update" onsubmit="return ValidateFormRoom()"> <!--Process for updating a room will be executed once submit button is clicked--->
         <div id="form-half">
             <label for="room_id">Room ID: </label>
             <input type="text" id="room_id" class="text" name="room_id" value="<?php echo $room->get_room_id($id);?>" readonly>

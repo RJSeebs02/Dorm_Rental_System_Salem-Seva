@@ -95,7 +95,7 @@ if($admin->get_adm_access($admin_user) == 'Staff'){
 <?php
 }else{
 ?>
-<script src="javascript/script.js">
+<script src="../javascript/script.js">
 
 </script>
 <div id="subtitle">

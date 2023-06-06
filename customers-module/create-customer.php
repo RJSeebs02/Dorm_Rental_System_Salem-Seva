@@ -3,13 +3,16 @@
     <head>
         <title>Customer</title>
     </head>
+	<script src="javascript/script.js">
+
+	</script>
 <body>
 	<div id="subtitle">
         <h2>Create New Customer</h2>
 	</div>
     <div class="form-wrapper">
 		<!--Process for creating a customer will be executed once submit button is clicked--->
-		<form action="processes/process.customer.php?action=new" method="post">
+		<form action="processes/process.customer.php?action=new" method="post" onsubmit="return ValidateFormCust()">
 			<div id="form-half">
 				<label for="fname">First Name: </label>
 				<input type="text" id="fname" class="text" name="cust_fname" placeholder="Enter First Name..." required>

@@ -3,13 +3,14 @@
     <head>
         <title>Room</title>
     </head>
+	<script src="javascript/script.js"></script>
 <body>
 	<div id="subtitle">
         <h2>Create New Room</h2>
 	</div>
 	<div class="form-wrapper">
 		<!--Process for creating a room will be executed once submit button is clicked--->
-		<form action="processes/process.room.php?action=new" method="post">
+		<form action="processes/process.room.php?action=new" method="post" onsubmit="return ValidateFormRoom()">
 			<div id="form-half">
 				<label for="room_number">Room Number: </label>
 				<input type="text" id="room_number" class="text" name="room_number" placeholder="Enter Room Number..." required>
